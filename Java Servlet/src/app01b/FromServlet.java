@@ -1,4 +1,4 @@
-/**
+package app01b; /**
  * Created by zlby9 on 2017/5/12.
  */
 
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "FormServlet", urlPatterns = {"/form"})
+@WebServlet(name = "FormServlet", urlPatterns = {"/app01b/form"})
 public class FromServlet extends HttpServlet {
     private static final long serialVersionUID = 54L;
     private static final String TITLE = "Order Form";

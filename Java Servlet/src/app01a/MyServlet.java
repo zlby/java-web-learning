@@ -1,5 +1,6 @@
+package app01a;
 /**
- * Created by zlby9 on 2017/5/12.
+ * Created by zlby9 on 2017/5/11.
  */
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,17 +9,10 @@ import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 
-@WebServlet(name = "ServletConfigDemoServlet",
-        urlPatterns = {"/servletConfigDemo"},
-        initParams = {
-                @WebInitParam(name = "admin", value = "Harry Taciak"),
-                @WebInitParam(name = "email", value = "admin@example.com")
-    }
-)
-public class ServletConfigDemoServlet implements Servlet {
+@WebServlet (name = "MyServlet", urlPatterns = {"/app01a/my"})
+public class MyServlet implements Servlet {
 
     private transient ServletConfig servletConfig;
 
@@ -34,21 +28,18 @@ public class ServletConfigDemoServlet implements Servlet {
 
     @Override
     public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
-        ServletConfig servletConfig = getServletConfig();
-        String admin = servletConfig.getInitParameter("admin");
-        String email = servletConfig.getInitParameter("email");
+        String servletName = servletConfig.getServletName();
         servletResponse.setContentType("text/html");
         PrintWriter writer = servletResponse.getWriter();
-        writer.print("<html><head></head><body>" +
-                "Admin:" + admin +
-                "<br/>Email:" + email +
+        writer.print("<html><head></head>" +
+                "<body>Hello from " + servletName +
                 "</body></html>"
         );
     }
 
     @Override
     public String getServletInfo() {
-        return "ServletConfig demo";
+        return "My Servlet";
     }
 
     @Override
